@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-success: #4ade80;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header Section */
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title h1 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            letter-spacing: -0.05em;
+        }
+
+        .header-title h1 span {
+            color: var(--accent);
+        }
+
+        .header-title p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Layouts */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* Summary */
+        .summary {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Technical Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 11fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            background: var(--border-color);
+            color: var(--text-main);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .tag.cert {
+            background: rgba(74, 222, 128, 0.15);
+            color: var(--accent-success);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        /* Experience & Projects */
+        .item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .item-company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .item-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-info {
+                text-align: left;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-title">
+            <h1>Rukundo<span>Rukundo</span></h1>
+            <p>Cloud DevOps Engineer</p>
+        </div>
+        <div class="contact-info">
+            <p>📍 Austin, TX (Open to Remote)</p>
+            <p>📱 (512) 555-0199</p>
+            <p>✉️ <a href="mailto:alex.mercer@email.com">alex.mercer@email.com</a></p>
+            <p>🔗 <a href="#">linkedin.com/in/username</a> | <a href="#">github.com/username</a></p>
+        </div>
+    </header>
+
+    <section>
+        <h2>Professional Summary</h2>
+        <p class="summary">
+            Cloud & DevOps Engineer with 3 years of hands-on experience designing, automating, and scaling cloud infrastructure. Proven track record of reducing deployment times by migrating legacy systems to containerized microservices architectures. Passionate about infrastructure as code (IaC), robust CI/CD ecosystems, and maintaining high-availability production environments.
+        </p>
+    </section>
+
+    <section>
+        <h2>Technical Skills & Certifications</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Cloud & Platforms</h3>
+                <div class="tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">Linux/Unix</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>IaC & Orchestration</h3>
+                <div class="tags">
+                    <span class="tag">Terraform</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>CI/CD & Automation</h3>
+                <div class="tags">
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Bash</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Certifications</h3>
+                <div class="tags">
+                    <span class="tag cert">AWS Solutions Architect</span>
+                    <span class="tag cert">Certified Kubernetes Admin (CKA)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Experience</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">DevOps Engineer <span class="item-company">@ CloudScale Solutions</span></div>
+                <div class="item-date">2024 — Present</div>
+            </div>
+            <ul>
+                <li>Designed and maintained production AWS infrastructure using Terraform, completely removing manual configuration drift.</li>
+                <li>Migrated a monolithic application into Amazon EKS (Kubernetes), boosting infrastructure resource utilization by 35%.</li>
+                <li>Rebuilt CI/CD pipelines via GitHub Actions, shrinking code-to-production deployment times from 45 minutes down to 8 minutes.</li>
+                <li>Implemented central logging and monitoring suites using Prometheus and Grafana to slash incident resolution times (MTTR) by 40%.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">Associate Cloud Engineer <span class="item-company">@ Nexus Tech Corp</span></div>
+                <div class="item-date">2023 — 2024</div>
+            </div>
+            <ul>
+                <li>Managed automated backups, security patching, and IAM policy compliance configurations across multiple staging environments.</li>
+                <li>Authored Python and Bash automation scripts that saved development teams an estimated 10 engineering hours per week.</li>
+                <li>Collaborated closely with software QA teams to provision on-demand Docker staging setups using continuous delivery best practices.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Key Projects</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">Automated Multi-Region Failover Architecture</div>
+            </div>
+            <ul>
+                <li>Engineered a fully automated multi-region active-passive fallback solution on AWS using Route 53, Application Load Balancers, and DynamoDB global tables, keeping client applications highly available.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">GitOps-Driven Kubernetes Pipeline</div>
+            </div>
+            <ul>
+                <li>Constructed a modern GitOps continuous delivery flow using ArgoCD to orchestrate seamless, zero-downtime rolling updates over Kubernetes-hosted microservices.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">B.S. in Computer Science</div>
+                <div class="item-date">Graduated 2023</div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">University of Texas at Austin</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
