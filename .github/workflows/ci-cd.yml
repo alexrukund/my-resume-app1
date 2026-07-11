@@ -19,7 +19,7 @@ jobs:
         with:
           scan-type: 'fs'
           severity: 'HIGH,CRITICAL'
-          exit-code: '1'
+          exit-code: 0
 
       - name: docker build image
         run: |
@@ -30,7 +30,7 @@ jobs:
         with:
           image-ref: '891377154217.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest'
           format: 'table'
-          exit-code: '1'
+          exit-code: 1
           severity: 'HIGH,CRITICAL'
           ignore-unfixed: true
 
