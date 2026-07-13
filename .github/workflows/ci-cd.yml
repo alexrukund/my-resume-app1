@@ -2,8 +2,14 @@ name: Build and Push to ECR
 
 on:
   push:
-    branches:
-      - main
+      # pull_request:
+      #     branches: ['main, 'dev']
+    branches: ['main']
+
+permissions:
+  contents: read
+  id-token: write
+      
 
 jobs:
   build:
