@@ -1,55 +1,53 @@
+
 name: Build and Push to ECR
 
 on:
   push:
-    branches:
-      - main
-      # - dev
+      # pull_request:
+      #     branches: ['main, 'dev']
+    branches: ['main']
 
 permissions:
   contents: read
   id-token: write
+      
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: Checkout the code
         uses: actions/checkout@v4
 
-      - name: Trivy Filesystem Scan
+      - name: Trivy filesystem scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           severity: HIGH,CRITICAL
           exit-code: "0"
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Build Docker image
+        run: |
+          docker build -t 891377154217.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest .
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
-          role-to-assume: ${{ secrets.ECR_ROLE }}
+          image-ref: 891377154217.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest
+          format: table
+          exit-code: "0"
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4 # More information on this action can be found below in the 'AWS Credentials' section
+        with:
+          role-to-assume: arn:aws:iam::891377154217:role/git-action-role
           aws-region: us-east-1
 
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build Docker Image
+      - name: Push Docker image to Amazon ECR
         run: |
-          docker build -t ${{ secrets.ECR_REPO }}/my-repo:latest .
-
-      - name: Scan Docker Image
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          image-ref: ${{ secrets.ECR_REPO }}/my-repo:latest
-          format: table
-          severity: HIGH,CRITICAL
-          ignore-unfixed: true
-          exit-code: "0"
-
-      - name: Push Docker Image to Amazon ECR
-        run: |
-          docker push ${{ secrets.ECR_REPO }}/my-repo:latest
-        
- 
+          docker push 891377154217.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest  
