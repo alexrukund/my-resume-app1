@@ -55,8 +55,10 @@ jobs:
 
 
   deploy_to_ecs:
+
+    needs: build_scan
     runs-on: ubuntu-latest
-    needs: build
+    
 
     steps:
       - name: Checkout the code
